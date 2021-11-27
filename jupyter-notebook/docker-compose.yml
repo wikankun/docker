@@ -1,0 +1,8 @@
+# Choosing an Image:
+# https://jupyter-docker-stacks.readthedocs.io/en/latest/using/selecting.html
+version: '3.7'
+services:
+  jupyter:
+    image: jupyter/datascience-notebook
+    volumes:
+      - /root/notebook-files:/home/jovyan/work
