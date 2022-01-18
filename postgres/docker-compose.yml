@@ -1,8 +1,9 @@
-version: '3.7'
+version: "3.7"
 
 services:
   postgres:
     image: postgres:alpine
+    container_name: postgres
     volumes:
       - postgres-data:/var/lib/postgresql/data
     environment:
@@ -15,3 +16,4 @@ services:
 
 volumes:
     postgres-data:
+    

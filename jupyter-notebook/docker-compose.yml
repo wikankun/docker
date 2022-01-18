@@ -1,8 +1,26 @@
 # Choosing an Image:
 # https://jupyter-docker-stacks.readthedocs.io/en/latest/using/selecting.html
-version: '3.7'
+version: "3.7"
 services:
   jupyter:
-    image: jupyter/datascience-notebook
+    image: jupyter/pyspark-notebook
+    container_name: jupyter
     volumes:
-      - /root/notebook-files:/home/jovyan/work
+      - ${LOCAL_WORKING_DIR:-/root/notebook-files}:/home/jovyan/work
+    ports:
+      - "8888:8888"
+    networks:
+      - web
+    restart: unless-stopped
+    environment:
+      JUPYTER_ENABLE_LAB: "yes"
+    command: "start-notebook.sh --NotebookApp.password=${ACCESS_TOKEN}"
+    labels:
+      - "traefik.http.routers.jupyter.rule=Host(`<URL>`)"
+      - "traefik.http.routers.jupyter.tls=true"
+      - "traefik.http.routers.jupyter.tls.certresolver=http"
+      - "traefik.port=8888"
+
+networks:
+  web:
+    external: true
