@@ -14,9 +14,9 @@ services:
       JUPYTER_ENABLE_LAB: "yes"
     command: "start-notebook.sh --NotebookApp.password=${ACCESS_TOKEN}"
     labels:
-      - traefik.http.routers.adminer.rule=Host(`${JUPYTER_URL}`)
-      - traefik.http.routers.adminer.tls=true
-      - traefik.http.routers.adminer.tls.certresolver=lets-encrypt
+      - traefik.http.routers.jupyter.rule=Host(`${JUPYTER_URL}`)
+      - traefik.http.routers.jupyter.tls=true
+      - traefik.http.routers.jupyter.tls.certresolver=lets-encrypt
       - traefik.port=8888
     networks:
       - web
