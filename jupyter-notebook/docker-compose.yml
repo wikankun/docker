@@ -20,8 +20,6 @@ services:
       - traefik.port=8888
     networks:
       - web
-    env_file:
-      - .env
 
 networks:
   web:
