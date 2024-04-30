@@ -1,0 +1,18 @@
+version: "3.8"
+
+services:
+  filebrowser:
+    image: filebrowser/filebrowser
+    container_name: filebrowser
+    user: "1000:1000"
+    volumes:
+      - ./filebrowser/database.db:/database.db
+      - ./filebrowser/.filebrowser.json:/.filebrowser.json
+      # - /path-to-your-data:/srv
+    ports:
+      - 8081:80
+    restart: unless-stopped
+    logging:
+      driver: json-file
+      options:
+        max-size: 1m

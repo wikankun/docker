@@ -2,9 +2,8 @@ version: "3.8"
 
 services:
   portainer:
-    container_name: portainer
     image: portainer/portainer-ce
-    restart: always
+    container_name: portainer
     volumes:
       - portainer_data:/data
       - /var/run/docker.sock:/var/run/docker.sock
@@ -12,6 +11,7 @@ services:
       - 8000:8000
       - 9000:9000
       - 9443:9443
+    restart: unless-stopped
     labels:
       - traefik.http.routers.portainer.rule=Host(`${PORTAINER_URL}`)
       - traefik.http.routers.portainer.tls=true
