@@ -12,14 +12,3 @@ services:
       - 8888:8888
     restart: unless-stopped
     command: "start-notebook.sh --NotebookApp.password=${ACCESS_TOKEN}"
-    labels:
-      - traefik.http.routers.jupyter.rule=Host(`${JUPYTER_URL}`)
-      - traefik.http.routers.jupyter.tls=true
-      - traefik.http.routers.jupyter.tls.certresolver=lets-encrypt
-      - traefik.port=8888
-    networks:
-      - web
-
-networks:
-  web:
-    external: true

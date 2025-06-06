@@ -4,11 +4,11 @@ services:
   filebrowser:
     image: filebrowser/filebrowser
     container_name: filebrowser
-    user: "1000:1000"
+    user: ${UID}:${GID}
     volumes:
-      - ./filebrowser/database.db:/database.db
-      - ./filebrowser/.filebrowser.json:/.filebrowser.json
-      # - /path-to-your-data:/srv
+      - ./database.db:/database.db
+      - ./filebrowser.json:/.filebrowser.json
+      - ${MEDIA_DIR:-./media}:/srv
     ports:
       - 8081:80
     restart: unless-stopped

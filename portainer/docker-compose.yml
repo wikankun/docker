@@ -12,17 +12,6 @@ services:
       - 9000:9000
       - 9443:9443
     restart: unless-stopped
-    labels:
-      - traefik.http.routers.portainer.rule=Host(`${PORTAINER_URL}`)
-      - traefik.http.routers.portainer.tls=true
-      - traefik.http.routers.portainer.tls.certresolver=lets-encrypt
-      - traefik.http.services.portainer.loadbalancer.server.port=9000
-    networks:
-      - web
 
 volumes:
   portainer_data:
-
-networks:
-  web:
-    external: true
