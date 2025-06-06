@@ -5,6 +5,11 @@ venv/
 ENV/
 env.bak/
 venv.bak/
+
 dockge/data/
 emulatorjs/data/
 emulatorjs/config/
+filebrowser/database.db
+filebrowser/filebrowser.json
+jellyfin/cache/
+jellyfin/config/

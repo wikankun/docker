@@ -1,0 +1,9 @@
+services:
+  dufs:
+    image: sigoden/dufs
+    container_name: dufs
+    command: /data -A
+    volumes:
+      - ${MEDIA_DIR:-./media}:/data
+    ports:
+      - 8082:5000

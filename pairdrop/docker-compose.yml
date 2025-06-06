@@ -1,0 +1,15 @@
+services:
+  pairdrop:
+    image: lscr.io/linuxserver/pairdrop:latest
+    container_name: pairdrop
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Asia/Jakarta
+      - RATE_LIMIT=false #optional
+      - WS_FALLBACK=false #optional
+      - RTC_CONFIG= #optional
+      - DEBUG_MODE=false #optional
+    ports:
+      - 8083:3000
+    restart: unless-stopped
