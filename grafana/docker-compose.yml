@@ -7,6 +7,10 @@ services:
       - 3000:3000
     volumes:
       - ./config/grafana:/var/lib/grafana
+    logging:
+      driver: json-file
+      options:
+        max-size: 10m
 
   loki:
     image: grafana/loki:latest
@@ -18,6 +22,10 @@ services:
       - ./config/loki:/etc/loki
       - ./data/loki:/loki
     command: -config.file=/etc/loki/loki-config.yaml
+    logging:
+      driver: json-file
+      options:
+        max-size: 10m
 
   prometheus:
     image: prom/prometheus:latest
@@ -29,3 +37,7 @@ services:
       - ./config/prometheus:/etc/prometheus
       - ./data/prometheus:/prometheus
     command: --config.file=/etc/prometheus/prometheus.yml
+    logging:
+      driver: json-file
+      options:
+        max-size: 10m
