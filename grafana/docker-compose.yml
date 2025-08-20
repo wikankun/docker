@@ -21,7 +21,7 @@ services:
     volumes:
       - ./config/loki:/etc/loki
       - ./data/loki:/loki
-    command: -config.file=/etc/loki/loki-config.yaml
+    command: -config.file=/etc/loki/loki.yml
     logging:
       driver: json-file
       options:
